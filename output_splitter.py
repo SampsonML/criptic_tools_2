@@ -14,19 +14,8 @@ import astropy.constants as const
 from glob import glob
 import os.path as osp
 from cripticpy import readchk
-import matplotlib.pyplot as plt
-import cmasher as cmr
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 import sys
 import time 
-
-#---------------------#
-# Making progress bar #
-#---------------------#
-from tqdm import tqdm
-from time import sleep
-
 
 #--------------#
 #  arg parser  #
