@@ -313,13 +313,6 @@ grammage_change_c3 = np.mean( grammage_c3 )
 grammage_change_c4 = np.mean( grammage_c4 )
 grammage_change_c5 = np.mean( grammage_c5 )
 
-#vel_c0 = np.round( np.mean( (z_pos_c0 - z_c0_init) / (particle_age_c0 - age_c0_init) ), 0)
-#vel_c1 = np.round( np.mean( (z_pos_c1 - z_c1_init) / (particle_age_c1 - age_c1_init) ), 0)
-#vel_c2 = np.round( np.mean( (z_pos_c2 - z_c2_init) / (particle_age_c2 - age_c2_init) ), 0)
-#vel_c3 = np.round( np.mean( (z_pos_c3 - z_c3_init) / (particle_age_c3 - age_c3_init) ), 0)
-#vel_c4 = np.round( np.mean( (z_pos_c4 - z_c4_init) / (particle_age_c4 - age_c4_init) ), 0)
-#vel_c5 = np.round( np.mean( (z_pos_c5 - z_c5_init) / (particle_age_c5 - age_c5_init) ), 0)
-
 vel_c0 = np.round(  (np.mean(z_pos_c0) - np.mean(z_c0_init)) / (np.mean(particle_age_c0) - np.mean(age_c0_init)), 1 )
 vel_c1 = np.round(  (np.mean(z_pos_c1) - np.mean(z_c1_init)) / (np.mean(particle_age_c1) - np.mean(age_c1_init)), 1 )
 vel_c2 = np.round(  (np.mean(z_pos_c2) - np.mean(z_c2_init)) / (np.mean(particle_age_c2) - np.mean(age_c2_init)), 1 )
