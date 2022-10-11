@@ -1,6 +1,6 @@
 #-------------------------------------#
-#     CR position visualisation       #
-#     Matt Sampson  Sep. 2022         #
+#       Chi output splitter           #
+#     Matt Sampson  Oct. 2022         #
 #-------------------------------------#
 
 #-----------------#
@@ -167,7 +167,7 @@ for k in range(args.filenum):
         #---------------------#
         # Read the checkpoint #
         #---------------------#
-        data = readchk(osp.join(args.dir,chkname+chknum),units=True, ke=True, ndot=False,
+        data = readchk(osp.join(args.dir,chkname+chknum),units=False, ke=False, ndot=False,
                 sort=True, meta=False)
         packets = data['packets']
 
@@ -186,12 +186,14 @@ for k in range(args.filenum):
         source = data['sources']
         part_source = source['x']
         source_x, source_y, source_z = zip(*part_source)
+        source_x = np.asarray(source_x)
+        source_y = np.asarray(source_y)
+        source_z = np.asarray(source_z)
         # Get Particle Age
         
         source_ID = np.asarray(packets['source'])
         #particle_age =  np.asarray( (t - (packets['tinj'] / t_turnover)) )
         particle_age =  np.asarray( (t - (packets['tinj'] )) )
-        grammage = np.asarray( packets['T'] ) ## change if wanting units
         x_pos = np.asarray(x_pos)
         y_pos = np.asarray(y_pos)
         z_pos = np.asarray(z_pos)
@@ -201,16 +203,16 @@ for k in range(args.filenum):
         # ------------------------------------------ #
         for i in range(len(x_pos)):
             # The bounds adjustment
-            if (np.abs(x_pos[i] - source_x[source[i]]) >= L):
+            if (np.abs(x_pos[i] - source_x[source_ID[i]]) >= L):
                x_pos[i] = x_pos[i] - np.sign(x_pos[i]) * 2 * L
-            if (np.abs(y_pos[i] - source_y[source[i]]) >= L):
+            if (np.abs(y_pos[i] - source_y[source_ID[i]]) >= L):
                 y_pos[i] = y_pos[i] - np.sign(y_pos[i]) * 2 * L
-            if (np.abs(z_pos[i] - source_z[source[i]]) >= L):
+            if (np.abs(z_pos[i] - source_z[source_ID[i]]) >= L):
                 z_pos[i] = z_pos[i] - np.sign(z_pos[i]) * 2 * L
             # The source adjustment to center all CRs
-            x_pos[i] = x_pos[i] - source_x[source[i]]
-            y_pos[i] = y_pos[i] - source_y[source[i]]
-            z_pos[i] = z_pos[i] - source_z[source[i]] 
+            x_pos[i] = x_pos[i] - source_x[source_ID[i]]
+            y_pos[i] = y_pos[i] - source_y[source_ID[i]]
+            z_pos[i] = z_pos[i] - source_z[source_ID[i]] 
         
         # now get permuation to sort by source ID
         p = np.argsort(source_ID)
@@ -221,7 +223,6 @@ for k in range(args.filenum):
         z_pos = z_pos[p]
         particle_age = particle_age[p]
         source_ID = source_ID[p]
-        grammage = grammage[p]
         
         # now grab the start and end points of the chi batches
         chi_batch_0_end = np.argmin(np.abs( source_ID - (n_src +1) )) -1
@@ -371,23 +372,32 @@ Data_Use_c5 = Data_Use_c5[Data_Use_c5[:,3] < 5e13] #3e13 old val
 # ---------------------------- #
 # Save the files per chi batch #
 # ---------------------------- #
+print('')
+print('-----------------------------------')
 Filename = 'chi_0' + args.dir + '.txt'
+print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c0, delimiter=',')
 
 Filename = 'chi_1' + args.dir + '.txt'
+print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c1, delimiter=',')
 
 Filename = 'chi_2' + args.dir + '.txt'
+print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c2, delimiter=',')
 
 Filename = 'chi_3' + args.dir + '.txt'
+print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c3, delimiter=',')
 
 Filename = 'chi_4' + args.dir + '.txt'
+print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c4, delimiter=',')
 
 Filename = 'chi_5' + args.dir + '.txt'
+print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c5, delimiter=',')
+print('-----------------------------------')
 # --------------------------------------------- #
 
 
