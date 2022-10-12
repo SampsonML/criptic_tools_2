@@ -592,7 +592,7 @@ if __name__ == '__main__':
     ################################################
     ### Saving results as txt file
     ################################################
-    Filename = '576_points_' + args.dir + '.txt'
+    Filename = 'fitted_params_' + args.dir + '.txt'
     np.savetxt(Filename, results, delimiter=',')
     ################################################
    
