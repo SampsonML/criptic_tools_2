@@ -304,13 +304,15 @@ for k in range(args.filenum):
 # -------------- #
 # Age Selections #
 # -------------- #
+age_max = t_turnover # define cutoff age since we don't delete packets
+
 # ---------------------------------------------------------------#
 Data_Combine_c0 = np.column_stack((displacement_perp_x_c0, 
                                 displacement_perp_y_c0,
                                 displacement_par_c0,time_vals_c0))
 # Subset data for speed
 Data_Use_c0 = Data_Combine_c0[Data_Combine_c0[:,3] > 1e2]
-Data_Use_c0 = Data_Use_c0[Data_Use_c0[:,3] < 5e13] #3e13 old val
+Data_Use_c0 = Data_Use_c0[Data_Use_c0[:,3] < age_max] #3e13 old val
 # ---------------------------------------------------------------#
 
 # ---------------------------------------------------------------#
@@ -319,7 +321,7 @@ Data_Combine_c1 = np.column_stack((displacement_perp_x_c1,
                                 displacement_par_c1,time_vals_c1))
 # Subset data for speed
 Data_Use_c1 = Data_Combine_c1[Data_Combine_c1[:,3] > 1e2]
-Data_Use_c1 = Data_Use_c1[Data_Use_c1[:,3] < 5e13] #3e13 old val
+Data_Use_c1 = Data_Use_c1[Data_Use_c1[:,3] < age_max] #3e13 old val
 # ---------------------------------------------------------------#
 
 # ---------------------------------------------------------------#
@@ -328,7 +330,7 @@ Data_Combine_c2 = np.column_stack((displacement_perp_x_c2,
                                 displacement_par_c2,time_vals_c2))
 # Subset data for speed
 Data_Use_c2 = Data_Combine_c2[Data_Combine_c2[:,3] > 1e2]
-Data_Use_c2 = Data_Use_c2[Data_Use_c2[:,3] < 5e13] #3e13 old val
+Data_Use_c2 = Data_Use_c2[Data_Use_c2[:,3] < age_max] #3e13 old val
 # ---------------------------------------------------------------#
 
 # ---------------------------------------------------------------#
@@ -337,7 +339,7 @@ Data_Combine_c3 = np.column_stack((displacement_perp_x_c3,
                                 displacement_par_c3,time_vals_c3))
 # Subset data for speed
 Data_Use_c3 = Data_Combine_c3[Data_Combine_c3[:,3] > 1e2]
-Data_Use_c3 = Data_Use_c3[Data_Use_c3[:,3] < 5e13] #3e13 old val
+Data_Use_c3 = Data_Use_c3[Data_Use_c3[:,3] < age_max] #3e13 old val
 # ---------------------------------------------------------------#
 
 # ---------------------------------------------------------------#
@@ -346,7 +348,7 @@ Data_Combine_c4 = np.column_stack((displacement_perp_x_c4,
                                 displacement_par_c4,time_vals_c4))
 # Subset data for speed
 Data_Use_c4 = Data_Combine_c4[Data_Combine_c4[:,3] > 1e2]
-Data_Use_c4 = Data_Use_c4[Data_Use_c4[:,3] < 5e13] #3e13 old val
+Data_Use_c4 = Data_Use_c4[Data_Use_c4[:,3] < age_max] #3e13 old val
 # ---------------------------------------------------------------#
 
 # ---------------------------------------------------------------#
@@ -355,7 +357,7 @@ Data_Combine_c5 = np.column_stack((displacement_perp_x_c5,
                                 displacement_par_c5,time_vals_c5))
 # Subset data for speed
 Data_Use_c5 = Data_Combine_c5[Data_Combine_c5[:,3] > 1e2]
-Data_Use_c5 = Data_Use_c5[Data_Use_c5[:,3] < 5e13] #3e13 old val
+Data_Use_c5 = Data_Use_c5[Data_Use_c5[:,3] < age_max] #3e13 old val
 # ---------------------------------------------------------------#
 
 # ---------------------------- #
