@@ -365,27 +365,27 @@ Data_Use_c5 = Data_Use_c5[Data_Use_c5[:,3] < age_max] #3e13 old val
 # ---------------------------- #
 print('')
 print('-----------------------------------')
-Filename = 'chi_0' + args.dir + '.txt'
+Filename = 'chi_0_' + args.dir + '.txt'
 print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c0, delimiter=',')
 
-Filename = 'chi_1' + args.dir + '.txt'
+Filename = 'chi_1_' + args.dir + '.txt'
 print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c1, delimiter=',')
 
-Filename = 'chi_2' + args.dir + '.txt'
+Filename = 'chi_2_' + args.dir + '.txt'
 print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c2, delimiter=',')
 
-Filename = 'chi_3' + args.dir + '.txt'
+Filename = 'chi_3_' + args.dir + '.txt'
 print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c3, delimiter=',')
 
-Filename = 'chi_4' + args.dir + '.txt'
+Filename = 'chi_4_' + args.dir + '.txt'
 print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c4, delimiter=',')
 
-Filename = 'chi_5' + args.dir + '.txt'
+Filename = 'chi_5_' + args.dir + '.txt'
 print(f'Writing {Filename}')
 np.savetxt(Filename, Data_Use_c5, delimiter=',')
 print('-----------------------------------')
